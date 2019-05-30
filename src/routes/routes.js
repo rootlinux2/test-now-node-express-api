@@ -25,6 +25,20 @@ import {
   updateRole,
   deleteRole
 } from "../controllers/roleController";
+import {
+  addNewAccommodation,
+  getAccommodation,
+  getAccommodations,
+  updateAccommodation,
+  deleteAccommodation
+} from "../controllers/accommodationController";
+import {
+  getImages,
+  addNewImage,
+  getImage,
+  deleteImage,
+  getImagesByElementAndElementId
+} from "../controllers/imageController";
 
 const routes = app => {
   app
@@ -60,6 +74,24 @@ const routes = app => {
     .put(updateRole)
     .get(getRole)
     .delete(deleteRole);
+  app
+    .route("/api/accommodation")
+    .get(getAccommodations)
+    .post(addNewAccommodation);
+  app
+    .route("/api/accommodation/:_id")
+    .put(updateAccommodation)
+    .get(getAccommodation)
+    .delete(deleteAccommodation);
+  app
+    .route("/api/image")
+    .get(getImages)
+    .post(addNewImage);
+  app.route("/api/image/getImagesByElementAndElementId").post(getImagesByElementAndElementId);
+  app
+    .route("/api/image/:_id")
+    .get(getImage)
+    .delete(deleteImage);
 };
 
 export default routes;
