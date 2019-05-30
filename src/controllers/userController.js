@@ -203,7 +203,7 @@ export function deleteUser(req, res) {
 }
 
 export function authUser(req, res) {
-  var fecht = require("isomorphic-fetch");
+  var fecht = require('isomorphic-fetch');
   const { token } = req.body;
 
   try {
