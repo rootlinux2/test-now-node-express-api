@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-var AccommodationSchema = new Schema({
+var ActivitySchema = new Schema({
   tittle: {
     type: Object
   },
-  type_of_property: {
+  type_of_activity: {
     type: Object
   },
   location: {
@@ -13,13 +13,10 @@ var AccommodationSchema = new Schema({
   guests: {
     type: Number
   },
-  rooms: {
-    type: Number
-  },
-  bathrooms: {
-    type: Number
-  },
-  price: {
+  hours:{
+    type:String
+  }   ,
+  priceByPerson: {
     type: Number
   },
   general_description: {
@@ -27,11 +24,8 @@ var AccommodationSchema = new Schema({
   },
   location_description: {
     type: Object
-  },
-  service_description: {
-    type: Object
-  },
-  host_rules: {
+  }, 
+  activity_rules: {
     type: Object
   },
   included_services: {
@@ -51,7 +45,7 @@ var AccommodationSchema = new Schema({
   },
   imagePortada: {
     type: String,
-    default:"http://localhost/img/allincuba/silueta-casa.png"
+    default:"http://localhost/img/allincuba/activities.svg"
   },
   created_at: {
     type: Date,
@@ -71,4 +65,4 @@ var AccommodationSchema = new Schema({
   }
 });
 
-export default AccommodationSchema;
+export default ActivitySchema;
