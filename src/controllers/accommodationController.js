@@ -67,6 +67,7 @@ export function addNewAccommodation(req, res) {
       accommodation.extra_services = extra_services;
       accommodation.address = address;
       accommodation.contact = contact;
+      accommodation.state = 'No Publicado';
       accommodation.created_by = user._id;
       accommodation.updated_by = user._id;
       accommodation.created_at = new Date();

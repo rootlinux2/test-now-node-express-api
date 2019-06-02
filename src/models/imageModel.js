@@ -7,6 +7,9 @@ var ImageSchema = new Schema({
   elementId: {
     type: String
   },
+  name: {
+    type: String
+  },
   picture: {
     type: String
   },
@@ -15,6 +18,10 @@ var ImageSchema = new Schema({
     default: false
   },
   highlight: {
+    type: Boolean,
+    default: false
+  },
+  portada: {
     type: Boolean,
     default: false
   },
