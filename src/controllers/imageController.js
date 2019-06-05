@@ -12,8 +12,10 @@ const Accommodation = mongoose.model("Accommodations", accommodationSchema);
 const Activity = mongoose.model("Activities", activitySchema);
 const Excursion = mongoose.model("Excursiones", excursionSchema);
 const Package = mongoose.model("Packages", packageSchema);
-const pathUrl = `/var/www/html/img/allincuba/upload/`;
-const urlImg = `http://localhost/img/allincuba/upload/`;
+const urlImg = `http://media.allin-cuba.com/`;
+const pathUrl = "./src/media/";
+// const pathUrl = `/var/www/html/img/allincuba/upload/`;
+// const urlImg = `http://localhost/img/allincuba/upload/`;
 
 export function getImagesByElementAndElementId(req, res) {
 	decodeAccess_token(req.headers.authorization, user => {
