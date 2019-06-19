@@ -58,7 +58,7 @@ export function invite(req, res) {
 	const transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: "ivanguevaracollazo@address.com",
+			user: "ivanguevaracollazo@gmail.com",
 			pass: "LianetAlejandro*"
 		}
 	});
@@ -70,10 +70,10 @@ export function invite(req, res) {
 		invitation.roles = roles;
 		invitation.save((error, invitation) => {
 			if (error) return res.json({ success: false, error: error });
-			let url = `https://allincuba.com/confirm/${invitation.code}`;
+			let url = `https://dev.futurasit.com/confirm/${invitation.code}`;
 			transporter.sendMail(
 				{
-					from: `INVITE <ivanguevaracollazo@address.com>`,
+					from: `Allin-cuba <ivanguevaracollazo@gmail.com>`,
 					to: email,
 					subject: `${subject}`,
 					html: `<table class="body-wrap">
@@ -127,7 +127,6 @@ export function invite(req, res) {
 			);
 		});
 	});
-	return res.json({ success: true });
 }
 
 export function confirm(req, res) {
@@ -205,8 +204,6 @@ export function deleteUser(req, res) {
 export function authUser(req, res) {
 	var fecht = require("isomorphic-fetch");
 	const { token } = req.body;
-	console.log("token", token);
-
 	try {
 		fetch(`https://futurasit.auth0.com/userinfo`, {
 			method: "GET",
@@ -218,9 +215,7 @@ export function authUser(req, res) {
 		})
 			.then(res => res.json())
 			.then(respon => {
-				console.log("respon", respon);
 				return User.findOne({ email: respon.email }, (error, user) => {
-					console.log("user", user);
 					if (error) {
 						return res.json({ status: "500", error: error });
 					} else {
