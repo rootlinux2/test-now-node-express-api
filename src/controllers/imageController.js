@@ -14,7 +14,7 @@ const Excursion = mongoose.model("Excursiones", excursionSchema);
 const Package = mongoose.model("Packages", packageSchema);
 const urlImg = `http://media.allin-cuba.com/`;
 const pathUrl = "./src/media/";
-// const pathUrl = `/var/www/html/img/allincuba/upload/`;
+// const pathUrl = `C:\/wamp64\/www\/img\/allincuba\/upload/`;
 // const urlImg = `http://localhost/img/allincuba/upload/`;
 
 export function getImagesByElementAndElementId(req, res) {
