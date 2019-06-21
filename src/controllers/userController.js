@@ -62,70 +62,66 @@ export function invite(req, res) {
 			pass: "LianetAlejandro*"
 		}
 	});
+	let invitaciones = [];
 	emails.map(email => {
-		let invitation = new Invitation();
+		let invitation = {};
 		invitation.email = email;
 		invitation.code = generateRandomCode(email);
 		invitation.admin = false;
 		invitation.roles = roles;
-		invitation.save((error, invitation) => {
-			if (error) return res.json({ success: false, error: error });
-			let url = `https://dev.futurasit.com/confirm/${invitation.code}`;
-			transporter.sendMail(
-				{
-					from: `Allin-cuba <ivanguevaracollazo@gmail.com>`,
-					to: email,
-					subject: `${subject}`,
-					html: `<table class="body-wrap">
-          <tr>
-            <td></td>
-            <td class="container" bgcolor="#FFFFFF">
-        
-              <div class="content">
-              <table>
-                <tr>
-                  <td>
-                   ${bodyEmail}
-                    <!-- Callout Panel -->
-                    <p class="callout">
-                       Registrese <a href=${url}>aqui! &raquo;</a>
-                    </p><!-- /Callout Panel -->					
-                                
-                    <!-- social & contact -->
-                    <table class="social" width="100%">
-                      <tr>
-                        <td>
-                         <!-- column 2 -->
-                          <table align="left" class="column">
-                            <tr>
-                              <td>				
-                                              
-                                <h5 class="">Informacion de Contacto:</h5>
-                                 Correo: <strong><a href="emailto:manager@tourfixer.com">manager@tourfixer.com</a></strong></p>
-                        
-                              </td>
-                            </tr>
-                          </table><!-- /column 2 -->
-                          
-                          <span class="clear"></span>	
-                          
-                        </td>
-                      </tr>
-                    </table><!-- /social & contact -->
-                                      </td>
-                </tr>
-              </table>
-              </div>                            
-            </td>
-          </tr>
-        </table>`
-				},
-				(error, info) => {
-					if (error) res.json({ success: false });
-					return res.json({ success: true });
-				}
-			);
+		invitaciones.push(invitation);
+	});
+	Invitation.insertMany(invitaciones, (error, invi) => {
+		if (error) return res.json({ status: "500", error: error });
+		invitaciones.map(invitacion => {
+			let url = `https://dev.futurasit.com/confirm/${invitacion.code}`;
+			transporter.sendMail({
+				from: `Allin-cuba <ivanguevaracollazo@gmail.com>`,
+				to: invitacion.email,
+				subject: `${subject}`,
+				html: `
+				<table class="body-wrap">
+					<tr>
+						<td></td>
+						<td class="container" bgcolor="#FFFFFF">
+							<div class="content">
+								<table>
+									<tr>
+										<td>
+											${bodyEmail}				
+											<p class="callout">
+												Registrese
+												<a href=${url}>aqui! &raquo;</a>
+											</p>
+											<table class="social" width="100%">
+												<tr>
+													<td>
+														<table align="left" class="column">
+															<tr>
+																<td>
+																	<h5 class="">Informacion de Contacto:</h5>
+																	Correo:
+																	<strong>
+																		<a href="emailto:manager@tourfixer.com">manager@tourfixer.com</a>
+																	</strong>
+																	</p>
+																</td>
+															</tr>
+														</table>	
+														<span class="clear"></span>
+													</td>
+												</tr>
+											</table>	
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>`
+			});
 		});
+		return res.json({ status: "200" });
 	});
 }
 
