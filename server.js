@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
 const app = express();
 const PORT = 3003;
-
+// const connection = `mongodb://admin:1qazxsw2@localhost:27017/allincuba`;
 const connection = "mongodb://localhost:27017/allincuba";
 mongoose.Promise = global.Promise;
 mongoose.connect(connection, { useNewUrlParser: true });
@@ -18,5 +18,5 @@ app.use(fileUpload({ safeFileNames: true, preserveExtension: true }));
 routes(app);
 
 app.listen(process.env.PORT || PORT, () => {
-  console.log(`you are server is running on ${PORT}`);
+	console.log(`you are server is running on ${PORT}`);
 });
