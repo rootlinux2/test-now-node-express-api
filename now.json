@@ -3,8 +3,5 @@
 	"name": "allin-cuba-api",
 	"scope": "futurasit",
 	"alias": "allincuba-api.futurasit.com",
-	"builds": [
-		{ "src": "./server.js", "use": "@now/node" },
-		{ "src": "src/**/*", "use": "@now/node" }
-	]
+	"builds": [{ "src": "./server.js", "use": "@now/node" }]
 }
