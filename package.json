@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon ./server.js --exec babel-node --presets babel-preset-env",
-		"dev": "babel-node ./server.js --presets babel-preset-env"
+		"dev": "babel-node ./server.js --presets babel-preset-env",
+		"now-build": "npm run dev"
 	},
 	"author": "gcbarroso2012@gmail.com",
 	"license": "ISC",
