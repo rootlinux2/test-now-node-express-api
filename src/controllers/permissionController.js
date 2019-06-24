@@ -111,7 +111,7 @@ export function deletePermission(req, res) {
 }
 
 export function getAllPermissionsCurrentUser(req, res) {
-  let util = require("./util");
+  let util = require("./utilController");
   util.decodeToken(req.headers.authorization, ({ user }) => {
     db.Role.find({ name: { $in: user.roles } }, (error, roles) => {
       if (error) return next({ success: false });
