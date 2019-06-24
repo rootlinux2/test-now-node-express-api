@@ -7,7 +7,8 @@ import fileUpload from "express-fileupload";
 const app = express();
 const PORT = 3003;
 // const connection = `mongodb://admin:1qazxsw2@localhost:27017/allincuba`;
-const connection = "mongodb://localhost:27017/allincuba";
+const connection = "mongodb://104.248.63.184:27017/allincuba";
+// const connection = "mongodb://localhost:27017/allincuba";
 mongoose.Promise = global.Promise;
 mongoose.connect(connection, { useNewUrlParser: true });
 
