@@ -5,7 +5,7 @@
 	"alias": "allincuba-api.futurasit.com",
 	"builds": [
 		{ "src": "./server.js", "use": "@now/node" },
-		{ "src": "./src/**/*.js", "use": "@now/static-build" }
+		{ "src": "./src", "use": "@now/static-build" }
 	],
 	"routes": [{ "src": "/", "dest": "server.js" }]
 }
