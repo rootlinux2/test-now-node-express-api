@@ -1,2 +1,0 @@
-# ciudad-nuestra-api
-
